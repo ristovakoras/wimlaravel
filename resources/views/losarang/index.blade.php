@@ -5,7 +5,7 @@
 
 {{-- Row Start --}}
 <div class="row">
-    <div class="col-lg-6 col-md-12">
+    <div class="col-xl-6 col-lg-6 col-md-6">
         <div class="card card-up">
             <div class="card-body card-body-up">
                 <h5 class="text-center p-4">KEMENTERIAN PERHUBUNGAN<br>
@@ -13,26 +13,26 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-1">
+    <div class="col-xl-1 col-lg-1 col-md-1">
         <div class="card card-image text-center">
             <div class="card-header">
                 <img src="{{ asset('image/logo_kemenhub.png') }}" width="39">
             </div>
         </div>
     </div>
-    <div class="col-lg-5 pt-4">
+    <div class="col-lg-5 pt-4 col-md-5">
         <h5 style="color: white">DAERAH UPPKB</h5>
     </div>
-    <div class="col-lg-1 offset-lg-6 mt-3">
+    <div class="col-lg-1 offset-lg-6 col-md-1 offset-md-6 mt-3">
         <div class="card card-image">
             <div class="card-header">
                 <img src="{{ asset('image/logo_ditjen_darat.png') }}" width="30">
             </div>
         </div>
     </div>
-    <div class="col-lg-5 mt-3">
+    <div class="col-xl-5 mt-3 col-md-5">
         <div class="btn-group">
-            <button class="btn btn-secondary btn-lg dropdown-toggle btn-dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-secondary btn-xl dropdown-toggle btn-dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             </button>
             <div class="dropdown-menu btn-dropdown-menu">
                 <a class="dropdown-item" href="#">LOSARANG</a>
@@ -47,7 +47,7 @@
 {{-- Start Row --}}
 <div class="row mt-4">
 
-    <div class="col-lg-1 col-md-2">
+    <div class="col-xl-1  col-md-1 ">
         <div class="card text-center card-start">
             <div class="card-header">
                 <p>START</p>
@@ -55,13 +55,13 @@
         </div>
     </div>
 
-    <div class="col-lg-2 col-md-1">
+    <div class="col-xl-2 col-md-2">
         <div class="container container-text">
             <input type="text" id="picker" class="form-control">
         </div>
     </div>
 
-    <div class="col-lg-1">
+    <div class="col-xl-1 col-md-1">
         <div class="card text-center card-start2">
             <div class="card-header">
                 <p>BERAT MINIMUM</p>
@@ -69,11 +69,11 @@
         </div>
     </div>
 
-    <div class="col-lg-2">
+    <div class="col-xl-2 col-md-2">
         <input type="text" class="border1" placeholder="   Diisi.....">
     </div>
 
-    <div class="col-lg-1 offset-lg-1">
+    <div class="col-xl-1 offset-xl-1 col-md-1 offset-md-1">
         <div class="card text-center card-start3">
             <div class="card-header">
                 <p>PELANGGARAN</p>
@@ -81,7 +81,7 @@
         </div>
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-xl-4 col-md-4">
         <input type="text" class="border2" placeholder="   Diisi.....">
     </div>
 
@@ -93,7 +93,7 @@
 {{-- Start Row --}}
 <div class="row mt-4">
 
-    <div class="col-lg-1">
+    <div class="col-xl-1 col-md-1">
         <div class="card text-center card-start">
             <div class="card-header">
                 <p>STOP</p>
@@ -101,13 +101,13 @@
         </div>
     </div>
 
-    <div class="col-lg-2">
+    <div class="col-xl-2 col-md-2">
         <div class="container container-text">
             <input type="text"  id="picker2" class="form-control">
         </div>
     </div>
 
-    <div class="col-lg-1">
+    <div class="col-xl-1 col-md-1">
         <div class="card text-center card-start2">
             <div class="card-header">
                 <p>DIMENSI</p>
@@ -115,12 +115,12 @@
         </div>
     </div>
 
-    <div class="col-lg-2">
+    <div class="col-xl-2 col-md-2">
         <input type="text" class="border1"  placeholder="   Diisi.....">
 
     </div>
 
-    <div class="col-lg-5 offset-lg-1">
+    <div class="col-xl-5 offset-xl-1 col-md-5 offset-md-1">
         <button type="submit" class="btn signin2">{{ __('Cari') }}</button>
     </div>
 
@@ -130,12 +130,12 @@
 
 
 <div class="row">
-    <div class="col-lg-12 col-md-13 col-sm-12">
+    <div class="col-xl-12 col-md-13 col-sm-12">
       <div class="d-flex justify-content-sm-center"><h2 class="my-5" style="color:#6cf5ff;">TAMPIL DATA</h2></div>
     </div>
   </div>
 
-    <div class="col-lg-12">
+    <div class="col-xl-12">
       <table class="table table-dark table-hover table-data ">
         <thead class="text-center" style="color: white;">
             <tr >
@@ -164,7 +164,7 @@
               <td>3.5 m</td>
               <td>5.6 M</td>
               <td>Over Weight</td>
-              <td>{{ $wim->Image }}</td>
+              <td><img src="{{ asset($wim->Image) }}" width="250"></td>
           </tr>
           @endforeach
       </tbody>

@@ -10933,15 +10933,23 @@ h1 {
 }
 .border1 {
 	background-color: transparent;
-    margin-left: 30px;
 	border: 1px solid #6cf5ff;
 	color:#6cf5ff ;
+    width: 210px;
+    height: 62px;
+    color: #6cf5ff;
+    border-radius: 10px;
+    margin-left: 95px;
 }
 .border2 {
 	background-color: transparent;
-    margin-left: 30px;
 	border: 1px solid #6cf5ff;
 	color:#6cf5ff ;
+    width: 375px;
+    height: 62px;
+    color: #6cf5ff;
+    border-radius: 10px;
+    margin-left: 45px;
 }
 
 .form-control {
@@ -10971,7 +10979,7 @@ footer{
     background-image: linear-gradient(to bottom right, #242263, #302e74);
     border-radius: 10px;
     position: absolute;
-    width: 660px;
+    width: 100%;
 }
 .card-image {
     background-image: linear-gradient(to bottom right, #242263, #302e74);
@@ -11034,25 +11042,162 @@ footer{
 .container-text {
     margin-left: 15px;
 }
-.border1 {
-    width: 210px;
-    height: 62px;
-    color: #6cf5ff;
-    border-radius: 10px;
-    margin-left: 95px;
-}
-.border2 {
-    width: 375px;
-    height: 62px;
-    color: #6cf5ff;
-    border-radius: 10px;
-    margin-left: 45px;
-}
+
 @media only screen and (max-width:768px){
     .card-body-up {
         background-image: linear-gradient(to bottom right, #242263, #302e74);
         border-radius: 10px;
-        position: relative;
+        position: absolute;
         width: 720px;
     }
+    .btn-dropdown {
+        width: 100%;
+        height: 60px;
+        border-radius: 10px;
+        text-align: right;
+    }
+    .btn-dropdown-menu {
+        width: 100%;
+        border-radius: 10px;
+        text-align: right;
+    }
 }
+@media only screen and (max-width: 992px){
+    .card-body-up {
+        background-image: linear-gradient(to bottom right, #242263, #302e74);
+        border-radius: 10px;
+        position: absolute;
+        width: 100%;
+    }
+    .btn-dropdown {
+        width: 385px;
+        height: 60px;
+        border-radius: 10px;
+        text-align: right;
+    }
+    .btn-dropdown-menu {
+        width: 100%;
+        border-radius: 10px;
+        text-align: right;
+    }
+    .card-start {
+        width: 100px;
+        align-items: center;
+        background-color: #302e74;
+        border-radius: 10px;
+        font-size: 12px;
+        height: auto;
+    }
+    .card-start2 {
+        width: 100px;
+        align-items: center;
+        background-color: #302e74;
+        border-radius: 10px;
+        font-size: 12px;
+        margin-left: 50px;
+    }
+    .card-start3 {
+        width: 100px;
+        align-items: center;
+        background-color: #302e74;
+        border-radius: 10px;
+        font-size: 12px;
+    }
+    #picker {
+        width: 100%;
+        margin-left: 15px;
+    }
+    #picker2 {
+        width: 100%;
+        margin-left: 15px;
+    }
+    .border1 {
+        background-color: transparent;
+        border: 1px solid #6cf5ff;
+        color:#6cf5ff ;
+        width: 100%;
+        height: 62px;
+        color: #6cf5ff;
+        border-radius: 10px;
+        margin-left: 95px;
+    }
+    .border2 {
+        background-color: transparent;
+        border: 1px solid #6cf5ff;
+        color:#6cf5ff ;
+        width: 255px;
+        height: 62px;
+        color: #6cf5ff;
+        border-radius: 10px;
+        margin-left: 45px;
+    }
+}
+
+
+@media only screen and (min-width: 1400px) {
+    .card-body-up {
+        background-image: linear-gradient(to bottom right, #242263, #302e74);
+        border-radius: 10px;
+        position: absolute;
+        width: 100%;
+    }
+    .btn-dropdown {
+        width: 770px;
+        height: 60px;
+        border-radius: 10px;
+        text-align: right;
+    }
+    #picker {
+        width: 100%;
+        margin-left: 15px;
+    }
+    #picker2 {
+        width: 100%;
+        margin-left: 15px;
+    }
+    .card-start {
+        width: 190px;
+        align-items: center;
+        background-color: #302e74;
+        border-radius: 10px;
+        font-size: 12px;
+        height: auto;
+    }
+    .card-start2 {
+        width: 190px;
+        align-items: center;
+        background-color: #302e74;
+        border-radius: 10px;
+        font-size: 12px;
+        margin-left: 50px;
+    }
+    .card-start3 {
+        width: 190px;
+        align-items: center;
+        background-color: #302e74;
+        border-radius: 10px;
+        font-size: 12px;
+    }
+    .border1 {
+        background-color: transparent;
+        border: 1px solid #6cf5ff;
+        color:#6cf5ff ;
+        width: 100%;
+        height: 62px;
+        color: #6cf5ff;
+        border-radius: 10px;
+        margin-left: 95px;
+    }
+    .border2 {
+        background-color: transparent;
+        border: 1px solid #6cf5ff;
+        color:#6cf5ff ;
+        width: 565px;
+        height: 62px;
+        color: #6cf5ff;
+        border-radius: 10px;
+        margin-left: 45px;
+    }
+
+}
+

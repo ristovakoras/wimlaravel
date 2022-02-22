@@ -109,7 +109,7 @@ class WimGetController extends Controller
             'DoesLicencePlateExist' => request('DoesLicencePlateExist'),
             'IsOverWeight' => request('IsOverWeight'),
             'IsOverDimension' => request('IsOverDimension'),
-            'Image' => $path,
+            'Image' => $path->file('Image'),
 
         ]);
 
