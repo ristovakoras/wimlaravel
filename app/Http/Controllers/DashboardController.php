@@ -60,7 +60,7 @@ class DashboardController extends Controller
         // return view('losarang.index', compact('data'));
         // return view('losarang.index');
 
-        $data = Wim::latest()->paginate(2);
+        $data = Wim::latest()->paginate(10);
         return view('losarang.index', compact('data'));
 
     }

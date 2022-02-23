@@ -11043,7 +11043,20 @@ footer{
     margin-left: 15px;
 }
 
-@media only screen and (max-width:768px){
+.page-link {
+    background: transparent;
+    width: 20rem;
+    padding: 4%;
+    border: 2px solid #3555fe;
+    color: white;
+}
+.page-link:hover {
+    background: linear-gradient(to right, #3555fe, #3da2fb);
+    color: white;
+    border: 2px solid #3555fe;
+}
+
+@media only screen and (min-width:768px){
     .card-body-up {
         background-image: linear-gradient(to bottom right, #242263, #302e74);
         border-radius: 10px;
@@ -11051,7 +11064,7 @@ footer{
         width: 720px;
     }
     .btn-dropdown {
-        width: 100%;
+        width: 200px;
         height: 60px;
         border-radius: 10px;
         text-align: right;
@@ -11060,56 +11073,6 @@ footer{
         width: 100%;
         border-radius: 10px;
         text-align: right;
-    }
-}
-@media only screen and (max-width: 992px){
-    .card-body-up {
-        background-image: linear-gradient(to bottom right, #242263, #302e74);
-        border-radius: 10px;
-        position: absolute;
-        width: 100%;
-    }
-    .btn-dropdown {
-        width: 385px;
-        height: 60px;
-        border-radius: 10px;
-        text-align: right;
-    }
-    .btn-dropdown-menu {
-        width: 100%;
-        border-radius: 10px;
-        text-align: right;
-    }
-    .card-start {
-        width: 100px;
-        align-items: center;
-        background-color: #302e74;
-        border-radius: 10px;
-        font-size: 12px;
-        height: auto;
-    }
-    .card-start2 {
-        width: 100px;
-        align-items: center;
-        background-color: #302e74;
-        border-radius: 10px;
-        font-size: 12px;
-        margin-left: 50px;
-    }
-    .card-start3 {
-        width: 100px;
-        align-items: center;
-        background-color: #302e74;
-        border-radius: 10px;
-        font-size: 12px;
-    }
-    #picker {
-        width: 100%;
-        margin-left: 15px;
-    }
-    #picker2 {
-        width: 100%;
-        margin-left: 15px;
     }
     .border1 {
         background-color: transparent;
@@ -11133,6 +11096,148 @@ footer{
     }
 }
 
+@media only screen and (min-width: 992px){
+    .card-body-up {
+        background-image: linear-gradient(to bottom right, #242263, #302e74);
+        border-radius: 10px;
+        position: absolute;
+        width: 100%;
+    }
+    .btn-dropdown {
+        width: 455px;
+        height: 60px;
+        border-radius: 10px;
+        text-align: right;
+    }
+    .btn-dropdown-menu {
+        width: 100%;
+        border-radius: 10px;
+        text-align: right;
+    }
+    .card-start {
+        width: 130px;
+        align-items: center;
+        background-color: #302e74;
+        border-radius: 10px;
+        font-size: 12px;
+        height: auto;
+    }
+    .card-start2 {
+        width: 130px;
+        align-items: center;
+        background-color: #302e74;
+        border-radius: 10px;
+        font-size: 12px;
+        margin-left: 50px;
+    }
+    .card-start3 {
+        width: 130px;
+        align-items: center;
+        background-color: #302e74;
+        border-radius: 10px;
+        font-size: 12px;
+    }
+    #picker {
+        width: 100%;
+        margin-left: 15px;
+    }
+    #picker2 {
+        width: 100%;
+        margin-left: 15px;
+    }
+    .border1 {
+        background-color: transparent;
+        border: 1px solid #6cf5ff;
+        color:#6cf5ff ;
+        width: 100%;
+        height: 62px;
+        color: #6cf5ff;
+        border-radius: 10px;
+        margin-left: 95px;
+    }
+    .border2 {
+        background-color: transparent;
+        border: 1px solid #6cf5ff;
+        color:#6cf5ff ;
+        width: 310px;
+        height: 62px;
+        color: #6cf5ff;
+        border-radius: 10px;
+        margin-left: 45px;
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    .card-body-up {
+        background-image: linear-gradient(to bottom right, #242263, #302e74);
+        border-radius: 10px;
+        position: absolute;
+        width: 100%;
+    }
+    .btn-dropdown {
+        width: 532px;
+        height: 60px;
+        border-radius: 10px;
+        text-align: right;
+    }
+    .btn-dropdown-menu {
+        width: 100%;
+        border-radius: 10px;
+        text-align: right;
+    }
+    .card-start {
+        width: 150px;
+        align-items: center;
+        background-color: #302e74;
+        border-radius: 10px;
+        font-size: 12px;
+        height: auto;
+    }
+    .card-start2 {
+        width: 150px;
+        align-items: center;
+        background-color: #302e74;
+        border-radius: 10px;
+        font-size: 12px;
+        margin-left: 50px;
+    }
+    .card-start3 {
+        width: 150px;
+        align-items: center;
+        background-color: #302e74;
+        border-radius: 10px;
+        font-size: 12px;
+    }
+    #picker {
+        width: 100%;
+        margin-left: 15px;
+    }
+    #picker2 {
+        width: 100%;
+        margin-left: 15px;
+    }
+    .border1 {
+        background-color: transparent;
+        border: 1px solid #6cf5ff;
+        color:#6cf5ff ;
+        width: 100%;
+        height: 62px;
+        color: #6cf5ff;
+        border-radius: 10px;
+        margin-left: 95px;
+    }
+    .border2 {
+        background-color: transparent;
+        border: 1px solid #6cf5ff;
+        color:#6cf5ff ;
+        width: 375px;
+        height: 62px;
+        color: #6cf5ff;
+        border-radius: 10px;
+        margin-left: 45px;
+    }
+}
+
 
 @media only screen and (min-width: 1400px) {
     .card-body-up {
@@ -11142,8 +11247,13 @@ footer{
         width: 100%;
     }
     .btn-dropdown {
-        width: 770px;
+        width: 100%;
         height: 60px;
+        border-radius: 10px;
+        text-align: right;
+    }
+    .btn-dropdown-menu {
+        width: 100%;
         border-radius: 10px;
         text-align: right;
     }
@@ -11156,7 +11266,7 @@ footer{
         margin-left: 15px;
     }
     .card-start {
-        width: 190px;
+        width: 150px;
         align-items: center;
         background-color: #302e74;
         border-radius: 10px;
@@ -11164,7 +11274,7 @@ footer{
         height: auto;
     }
     .card-start2 {
-        width: 190px;
+        width: 150px;
         align-items: center;
         background-color: #302e74;
         border-radius: 10px;
@@ -11172,7 +11282,7 @@ footer{
         margin-left: 50px;
     }
     .card-start3 {
-        width: 190px;
+        width: 150px;
         align-items: center;
         background-color: #302e74;
         border-radius: 10px;
@@ -11192,7 +11302,7 @@ footer{
         background-color: transparent;
         border: 1px solid #6cf5ff;
         color:#6cf5ff ;
-        width: 565px;
+        width: 560px;
         height: 62px;
         color: #6cf5ff;
         border-radius: 10px;

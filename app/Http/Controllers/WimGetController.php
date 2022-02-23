@@ -109,7 +109,7 @@ class WimGetController extends Controller
             'DoesLicencePlateExist' => request('DoesLicencePlateExist'),
             'IsOverWeight' => request('IsOverWeight'),
             'IsOverDimension' => request('IsOverDimension'),
-            'Image' => $path->file('Image'),
+            'Image' => $path,
 
         ]);
 
@@ -147,17 +147,17 @@ class WimGetController extends Controller
 
          ]);
 
-        return response()->file([
-            'success'=> true,
-            'message'=>'success',
-            'data'=>$request->all()
+         $user = auth()->userOrFail();
+        } catch(\Tymon\JWTAuth\Exceptions\UserNotDefinedException $e) {
+            return response()->json(['error' => $e->getMessage()
         ]);
-    } catch (\Exception $e){
-        return response()->json([
-            'message'=>'Error',
-            'errors'=>$e->getMessage()
+        }
+            return response()->json([
+                'success'=> true,
+                'message'=>'success',
+                'data'=>$request->all()
         ]);
-    }
+
     }
 
 }

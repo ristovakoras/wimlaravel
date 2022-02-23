@@ -34,17 +34,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Daerah UPPKB
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ url('losarang/index') }}">LOSARANG</a>
-                            <a class="dropdown-item" href="{{ url('kulwaru/index') }}">KULWARU</a>
-                        </li>
-                    </ul>
+
 
 
                     <!-- Right Side Of Navbar -->
