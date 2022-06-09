@@ -14,18 +14,18 @@ class CreateWimsTable extends Migration
     public function up()
     {
         Schema::create('wim', function (Blueprint $table) {
-            $table->bigIncrements('id_wim')->autoIncrements();
-            $table->float('Weight');
+            $table->bigIncrements('id')->autoIncrements();
+            $table->float('Weight_wim');
             $table->float('Speed');
             $table->float('LimitWeight');
             $table->float('LimitAxle');
             $table->float('OverWeight');
             $table->float('OverPercentage');
-            $table->float('IsWeightOver');
-            $table->float('Axle_wim');
+            $table->boolean('IsWeightOver');
+            $table->integer('Axle_wim');
             $table->DateTime('WeighingDateTime');
             $table->time('WeighingTime');
-            $table->time('WeighingDate');
+            $table->Date('WeighingDate');
             $table->string('LicencePlate');
             $table->string('InfoTestNumber');
             $table->string('InfoValidPeriod');
@@ -34,9 +34,9 @@ class CreateWimsTable extends Migration
             $table->string('InfoOwnerName');
             $table->string('InfoOwnerAddress');
             $table->boolean('DoesLicencePlateExist');
-            $table->boolean('IsOverWeight');
-            $table->boolean('IsOverDimension');
+            $table->string('Location');
             $table->string('Image');
+            $table->string('Image_Plate');
             $table->timestamps();
         });
     }

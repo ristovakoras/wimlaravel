@@ -14,6 +14,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    {{-- Style Tabel --}}
+
+
     {{-- Favicon Icon --}}
     <link rel="icon" type="image/x-icon" href="{{ asset('image/logo_kemenhub.png') }}>
 
@@ -27,9 +30,12 @@
         <nav class="navbar navbar-expand-md navbar-dark navbar-laravel" style="background-image: linear-gradient(to bottom right, #242263, #302e74);">
             <div class="container-fluid">
 
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    WIM MONISTORING SYSTEM
+                <img class="mr-2" src="{{ asset('image/logo_kemenhub.png') }}" width="39">
+                <a class="navbar-brand text-center" href="{{ url('/') }}">
+                    KEMENTRIAN PERHUBUNGAN DITJEN PERHUBUNGAN DARAT
                 </a>
+                <img src="{{ asset('image/logo_ditjen_darat.png') }}" width="30">
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -47,6 +53,12 @@
                             {{-- <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
                             <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
                             <li><a class="nav-link" href="{{ route('products.index') }}">Manage Product</a></li> --}}
+                            <li class="nav-item dropdown mr-4">
+                                <a id="navbarDropdown" class="nav-link" href="{{ url('dashboard') }}" role="button" aria-haspopup="true" aria-expanded="false" >
+                                   Wim Monitoring System
+                                </a>
+                            </li>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -66,6 +78,7 @@
                                     </form>
                                 </div>
                             </li>
+
                         @endguest
                     </ul>
                 </div>
@@ -74,176 +87,108 @@
 
 
 <main class="py-4">
-    <div class="container-fluid">
+    <div class="container">
 
 
-{{-- Row Start --}}
-<div class="row">
-    <div class="col-xl-6 col-lg-6 col-md-6">
-        <div class="card card-up">
-            <div class="card-body card-body-up">
-                <h5 class="text-center p-4">KEMENTERIAN PERHUBUNGAN<br>
-                    DITJEN PERHUBUNGAN DARAT</h5>
+        {{-- Row Start --}}
+        <div class="row d-flex justify-content-center text-center" >
+            <div class="col-12">
+                <h5 style="color: white">DAERAH UPPKB</h5>
+            </div>
+            <div class="col--12 mt-2">
+                <button type="button" class="btn btn-primary mt-3"><a href="{{ url('losarang/index') }}" style="color: white; background-color: linear-gradient(to bottom right, #242263, #302e74);">LOSARANG</a></button>
+                <button type="button" class="btn btn-primary mt-3"><a href="{{ url('kulwaru/index') }}" style="color: white;">KULWARU</a></button>
             </div>
         </div>
-    </div>
-    <div class="col-xl-1 col-lg-1 col-md-1">
-        <div class="card card-image text-center">
-            <div class="card-header">
-                <img src="{{ asset('image/logo_kemenhub.png') }}" width="39">
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-5 pt-4 col-md-5">
-        <h5 style="color: white">DAERAH UPPKB</h5>
-    </div>
-    <div class="col-lg-1 offset-lg-6 col-md-1 offset-md-6 mt-3">
-        <div class="card card-image">
-            <div class="card-header">
-                <img src="{{ asset('image/logo_ditjen_darat.png') }}" width="30">
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-5 mt-3 col-md-5">
-        <div class="btn-group">
-            <button class="btn btn-secondary btn-xl dropdown-toggle btn-dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            </button>
-            <div class="dropdown-menu btn-dropdown-menu">
-                <a class="dropdown-item" href="#">LOSARANG</a>
-                <a class="dropdown-item" href="#">KULWARU</a>
-            </div>
-          </div>
+        {{-- End Row --}}
 
+        {{-- Start Row --}}
+        <div class="row mt-5">
+
+            <div class="col-xl-1  col-md-1 ">
+                <div class="card text-center card-start">
+                    <div class="card-header">
+                        <p style="margin-top: 10%;">START</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-2 col-md-2">
+                <div class="container container-text">
+                    <input type="text" id="picker" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-xl-1 col-md-1">
+                <div class="card text-center card-start2">
+                    <div class="card-header">
+                        <p style="padding-bottom: 10%;">BERAT MINIMUM</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-2 col-md-2">
+                <input type="text" class="border1" placeholder="   Diisi.....">
+            </div>
+
+            <div class="col-xl-1 offset-xl-1 col-md-1 offset-md-1">
+                <div class="card text-center card-start3">
+                    <div class="card-header">
+                        <p style="margin-top: 12%; font-size: 12px;">PELANGGARAN</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-md-4">
+                <input type="text" class="border2" placeholder="   Diisi.....">
+            </div>
+
+
+        </div>
+        {{-- End Row --}}
+
+
+        {{-- Start Row --}}
+        <div class="row mt-4">
+
+            <div class="col-xl-1 col-md-1">
+                <div class="card text-center card-start4">
+                    <div class="card-header">
+                        <p style="margin-top: 10%;"> STOP</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-2 col-md-2">
+                <div class="container container-text">
+                    <input type="text"  id="picker2" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-xl-1 col-md-1">
+                <div class="card text-center card-start2">
+                    <div class="card-header">
+                        <p style="margin-top: 8%;">DIMENSI</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-2 col-md-2">
+                <input type="text" class="border1"  placeholder="   Diisi.....">
+
+            </div>
+
+            <div class="col-xl-5 offset-xl-1 col-md-5 offset-md-1">
+                <button type="submit" class="btn signin2">{{ __('Cari') }}</button>
+            </div>
+
+
+        </div>
     </div>
-</div>
 {{-- End Row --}}
-
-{{-- Start Row --}}
-<div class="row mt-4">
-
-    <div class="col-xl-1  col-md-1 ">
-        <div class="card text-center card-start">
-            <div class="card-header">
-                <p>START</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-2 col-md-2">
-        <div class="container container-text">
-            <input type="text" id="picker" class="form-control">
-        </div>
-    </div>
-
-    <div class="col-xl-1 col-md-1">
-        <div class="card text-center card-start2">
-            <div class="card-header">
-                <p>BERAT MINIMUM</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-2 col-md-2">
-        <input type="text" class="border1" placeholder="   Diisi.....">
-    </div>
-
-    <div class="col-xl-1 offset-xl-1 col-md-1 offset-md-1">
-        <div class="card text-center card-start3">
-            <div class="card-header">
-                <p>PELANGGARAN</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-4 col-md-4">
-        <input type="text" class="border2" placeholder="   Diisi.....">
-    </div>
+@yield('content')
 
 
-</div>
-{{-- End Row --}}
-
-
-{{-- Start Row --}}
-<div class="row mt-4">
-
-    <div class="col-xl-1 col-md-1">
-        <div class="card text-center card-start">
-            <div class="card-header">
-                <p>STOP</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-2 col-md-2">
-        <div class="container container-text">
-            <input type="text"  id="picker2" class="form-control">
-        </div>
-    </div>
-
-    <div class="col-xl-1 col-md-1">
-        <div class="card text-center card-start2">
-            <div class="card-header">
-                <p>DIMENSI</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-2 col-md-2">
-        <input type="text" class="border1"  placeholder="   Diisi.....">
-
-    </div>
-
-    <div class="col-xl-5 offset-xl-1 col-md-5 offset-md-1">
-        <button type="submit" class="btn signin2">{{ __('Cari') }}</button>
-    </div>
-
-
-</div>
-{{-- End Row --}}
-
-
-<div class="row">
-    <div class="col-xl-12 col-md-13 col-sm-12">
-      <div class="d-flex justify-content-sm-center"><h2 class="my-5" style="color:#6cf5ff;">TAMPIL DATA</h2></div>
-    </div>
-  </div>
-
-    <div class="col-xl-12">
-      <table class="table table-dark table-hover table-data ">
-        <thead class="text-center" style="color: white;">
-            <tr >
-                <th scope="col">#</th>
-                <th scope="col">Waktu</th>
-                <th scope="col">Plat Nomor</th>
-                <th scope="col">Berat</th>
-                <th scope="col">Berat Berlebih</th>
-                <th scope="col">Panjang</th>
-                <th scope="col">Lebar</th>
-                <th scope="col">Tinggi</th>
-                <th scope="col">Pelanggaran</th>
-                <th scope="col">Foto</th>
-            </tr>
-        </thead>
-        <tbody class="text-center" style="color: #6cf5ff ;">
-            @foreach ($data as $wim )
-
-          <tr>
-              <th scope="row">{{ $loop->iteration }}</th>
-              <td>{{ $wim->WeighingDateTime }}</td>
-              <td>{{ $wim->LicencePlate }}</td>
-              <td>{{ $wim->Weight }}</td>
-              <td>{{ $wim->OverWeight }}</td>
-              <td>{{ $wim->Axle_wim }}</td>
-              <td>3.5 m</td>
-              <td>5.6 M</td>
-              <td>Over Weight</td>
-              <td><img src="{{ asset($wim->Image) }}" width="250"></td>
-          </tr>
-          @endforeach
-      </tbody>
-      </table>
-    </div>
 
 <!-- Bootstrap core JavaScript -->
 <script src="{{ asset('vendor/jquery/jquery.min.js')}}"></script>
@@ -258,6 +203,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/206142bfe3.js" crossorigin="anonymous"></script>
+<script> $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+
 </div>
 </main>
 </div>

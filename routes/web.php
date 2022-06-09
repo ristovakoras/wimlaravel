@@ -23,6 +23,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/nav', function () {
+    return view('layouts.newnav_chart');
+});
+
 Auth::routes();
 
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -34,16 +38,33 @@ Route::group(['middleware' => ['role:admin']], function () {
 });
 
 Route::group(['middleware' => ['role:admin']], function () {
-    Route::get('/losarang/index', [DashboardController::class, 'losarang'])->name('losarang');
+    Route::get('/losarang', [DashboardController::class, 'losarang'])->name('losarang');
 });
 
 Route::group(['middleware' => ['role:admin']], function () {
-    Route::get('/kulwaru/index', [DashboardController::class, 'kulwaru'])->name('kulwaru');
+    Route::get('/kulwaru', [DashboardController::class, 'kulwaru'])->name('kulwaru');
+});
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('/report', [DashboardController::class, 'report'])->name('report');
+});
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::post('/exportexcel', [DashboardController::class, 'exportexcel'])->name('exportexcel');
+});
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('/exportpdf', [DashboardController::class, 'exportpdf'])->name('exportpdf');
 });
 
 Route::group(['middleware' => ['role:user']], function () {
-    Route::get('/dashboarduser', [DashboardController::class, 'dashuser'])->name('dashboarduser');
+    Route::get('/dashboarduser', [DashboardController::class, 'dashboarduser'])->name('dashboarduser');
 });
+Route::group(['middleware' => ['role:user']], function () {
+    Route::get('/losaranguser', [DashboardController::class, 'losaranguser'])->name('losaranguser');
+});
+Route::group(['middleware' => ['role:user']], function () {
+    Route::get('/kulwaruuser', [DashboardController::class, 'kulwaruuser'])->name('kulwaruuser');
+});
+
+
 
 
 // Route::middleware('role:admin')->get('/dashboard', function() {

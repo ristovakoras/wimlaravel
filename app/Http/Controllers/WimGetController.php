@@ -7,88 +7,91 @@ use App\Models\AxleSpacings;
 use App\Models\AxleWeights;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-// use Illuminate\Support\Facades\DB;
+
 
 class WimGetController extends Controller
 {
     public function index(Request $request)
     {
-        $data = Lidar::join("wim","wim.id_wim","=","lidar.id_lidar")
+        
+        $data = Lidar::join("wim","wim.id","=","lidar.id")
                 ->select("lidar.*","wim.*")
                 ->get();
-        $data1 = Wim::leftjoin("axle_spacings","axle_spacings.id_axle_spacings","=","wim.id_wim")
-                ->select("wim.id_wim","axle_spacings.*")
+        $data1 = Wim::leftjoin("axle_spacings","axle_spacings.id","=","wim.id")
+                ->select("wim.id","axle_spacings.*")
                 ->get();
-        $data2 = Wim::leftjoin("axle_weights","axle_weights.id_axle_weights","=","wim.id_wim")
-                ->select("wim.id_wim","axle_weights.*")
+        $data2 = Wim::leftjoin("axle_weights","axle_weights.id","=","wim.id")
+                ->select("wim.id","axle_weights.*")
                 ->get();
         return [$data,$data1,$data2];
-
-        // User::select("select wim.id_wim, wim.")->get();
-
-    // $wim = Wim::all();
-    // return response()->json([
-    //     'success'=> true,
-    //     'message'=>'success',
-    //     'data'=>$wim->all()
-    // ]);
 
     }
 
     public function store(Request $request)
     {
         request()->validate([
-            'Weight' => 'required',
-            'Speed' => 'required',
-            'LimitWeight' => 'required',
-            'LimitAxle' => 'required',
-            'OverWeight' => 'required',
-            'OverPercentage' => 'required',
-            'IsWeightOver' => 'required',
-            'Axle_wim' => 'required',
-            'WeighingDateTime' => 'required',
-            'WeighingTime' => 'required',
-            'WeighingDate' => 'required',
-            'LicencePlate' => 'required',
-            'InfoTestNumber' => 'required',
-            'InfoValidPeriod' => 'required',
-            'InfoVehicleType' => 'required',
-            'InfoAxleConfiguration' => 'required',
-            'InfoOwnerName' => 'required',
-            'InfoOwnerAddress' => 'required',
-            'DoesLicencePlateExist' => 'required',
-            'IsOverWeight' => 'required',
-            'IsOverDimension' => 'required',
-            'Axle' => 'required',
-            'Axle_Weight' => 'required',
-            'Axles' => 'required',
-            'Distance' => 'required','LidarReadingHeight' => 'required',
-            'LidarLimitHeight' => 'required',
-            'LidarLimitWidth' => 'required',
-            'LidarLimitLength' => 'required',
-            'LidarReadingHeight' => 'required',
-            'LidarReadingWidth' => 'required',
-            'LidarOverHeight' => 'required',
-            'LidarOverWidth' => 'required',
-            'LidarOverLength' => 'required',
-            'LidarPercentageHeight' => 'required',
-            'LidarPercentageWidth' => 'required',
-            'LidarPercentageLength' => 'required',
-            'LidarPercentageHeight' => 'required',
-            'IsLidarOverHeight' => 'required',
-            'IsLidarOverWidth' => 'required',
-            'IsLidarOverLength' => 'required',
-            'IsDimensionOver' => 'required',
-            'LidarRaw' => 'required|file',
-            'Image' => 'required|file|mimes:png,jpg,jpeg',
+            'Weight_wim',
+            'Speed',
+            'LimitWeight',
+            'LimitAxle',
+            'OverWeight',
+            'OverPercentage',
+            'IsWeightOver',
+            'Axle_wim',
+            'WeighingDateTime',
+            'WeighingTime',
+            'WeighingDate',
+            'LicencePlate',
+            'InfoTestNumber',
+            'InfoValidPeriod',
+            'InfoVehicleType',
+            'InfoAxleConfiguration',
+            'InfoOwnerName',
+            'InfoOwnerAddress',
+            'DoesLicencePlateExist',
+            'AxleWeight_1',
+            'AxleWeight_2',
+            'AxleWeight_3',
+            'AxleWeight_4',
+            'AxleWeight_5',
+            'Axles_1',
+            'Axles_2',
+            'Axles_3',
+            'Axles_4',
+            'Distance_1',
+            'Distance_2',
+            'Distance_3',
+            'Distance_4',
+            'LidarLimitHeight',
+            'LidarLimitWidth',
+            'LidarLimitLength',
+            'LidarReadingHeight',
+            'LidarReadingWidth',
+            'LidarReadingLength',
+            'LidarOverHeight',
+            'LidarOverWidth',
+            'LidarOverLength',
+            'LidarPercentageHeight',
+            'LidarPercentageWidth',
+            'LidarPercentageLength',
+            'LidarPercentageHeight',
+            'IsLidarOverHeight',
+            'IsLidarOverWidth',
+            'IsLidarOverLength',
+            'IsDimensionOver',
+            'Location',
+            'LidarRaw' => 'required|file|',
+            'Image' => 'required|mimes:jpeg,jpg,png',
+            'Image_Plate',
         ]);
 
-    // dd(time().$request->file('image')->getClientOriginalName());
+
     try {
-        // $fileName = time().$request->file('image')->getClientOriginalName();
+
         $path = Storage::disk('local')->put('storage/image_wim', $request->file('Image'));
-        Wim::create([
-            'Weight' => request('Weight'),
+        $path1 = Storage::disk('local')->put('storage/image_plate', $request->file('Image_Plate'));
+        $wim=Wim::create([
+            'Weight_wim' => request('Weight_wim'),
             'Speed' => request('Speed'),
             'LimitWeight' => request('LimitWeight'),
             'LimitAxle' => request('LimitAxle'),
@@ -107,23 +110,38 @@ class WimGetController extends Controller
             'InfoOwnerName' => request('InfoOwnerName'),
             'InfoOwnerAddress' => request('InfoOwnerAddress'),
             'DoesLicencePlateExist' => request('DoesLicencePlateExist'),
-            'IsOverWeight' => request('IsOverWeight'),
-            'IsOverDimension' => request('IsOverDimension'),
+            'Location' => request('Location'),
             'Image' => $path,
+            'Image_Plate' => $path1,
 
         ]);
+       
 
         AxleWeights::create([
-            'Axle' => request('Axle'),
-            'Weight' => request('Weight'),
+            'AxleWeight_1' => request('AxleWeight_1'),
+            'AxleWeight_2' => request('AxleWeight_2'),
+            'AxleWeight_3' => request('AxleWeight_3'),
+            'AxleWeight_4' => request('AxleWeight_4'),
+            'AxleWeight_5' => request('AxleWeight_5'),
+            'wim_id' => $wim->id
 
         ]);
 
         AxleSpacings::create([
-            'Axles' => request('Axles'),
-            'Distance' => request('Distance'),
+            'Axles_1' => request('Axles_1'),
+            'Axles_2' => request('Axles_2'),
+            'Axles_3' => request('Axles_3'),
+            'Axles_4' => request('Axles_4'),
+            'Distance_1' => request('Distance_1'),
+            'Distance_2' => request('Distance_2'),
+            'Distance_3' => request('Distance_3'),
+            'Distance_4' => request('Distance_4'),
+            'wim_id' => $wim->id
+
 
         ]);
+
+       
 
         $path1 = Storage::disk('public')->put('storage/raw_lidar', $request->file('LidarRaw'));
         Lidar::create([
@@ -144,6 +162,7 @@ class WimGetController extends Controller
             'IsLidarOverLength' => request('IsLidarOverLength'),
             'IsDimensionOver' => request('IsDimensionOver'),
             'LidarRaw' => $path1,
+            'wim_id' => $wim->id,
 
          ]);
 

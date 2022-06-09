@@ -10,6 +10,6 @@ class AxleWeights extends Model
     use HasFactory;
     protected $table = "axle_weights";
     protected $fillable = [
-        'id_axle_weights','Axle','Weight',
+        'id','AxleWeight_1','AxleWeight_2','AxleWeight_3','AxleWeight_4','AxleWeight_5','wim_id',
     ]; 
 }
