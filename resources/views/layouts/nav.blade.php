@@ -315,17 +315,6 @@
 
         <script>
             "use strict";
-
-			$('#table-head').DataTable( {
-				fixedHeader: true
-			});
-
-			var table = $('#table-head').DataTable();
-
-			new $.fn.dataTable.FixedHeader( table, {
-
-			});
-
                 $("#kt_daterangepicker_3").daterangepicker({
                         singleDatePicker: true,
                         showDropdowns: true,

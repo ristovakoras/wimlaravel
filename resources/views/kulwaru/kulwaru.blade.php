@@ -49,7 +49,7 @@
                 <div class="d-flex justify-content-start" data-kt-customer-table-toolbar="base">
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#kt_modal_1">Pilih Tanggal</button>
                     <!--begin::Modal-->
-                    <form action="{{ url('kulwaru') }}" method="GET">
+                    <form action="{{ url('losarang') }}" method="GET">
                         <div class="modal fade" tabindex="-1" id="kt_modal_1">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -84,7 +84,7 @@
                         <!--end::Modal-->
                     </form>
 
-                    <form action="{{ url('kulwaru') }}" method="GET">
+                    <form action="{{ url('losarang') }}" method="GET">
                         <button type="submit" href="#" class="btn btn-success mx-3" id="kt_button_1">
                             <span class="indicator-label">
                                 Refresh
@@ -103,143 +103,155 @@
         </div>
         <!--end::Card header-->
 
-        <hr style="background: #ffff">
+        <div class="separator separator-dashed border-light my-5"></div>
 
         <!--begin::Body-->
         <div class="card-body py-3" >
             <!--begin::Table container-->
-            <div class="table-responsive">
+            <div class="table-responsive" style="height: 600px">
                 <!--begin::Table-->
-                <table class="table align-middle gs-0 gy-1" style="color: white;">
+                <table class="table table-head m-grid-col-middle gs-0 gy-0 " style="color: white; font-size: 15px; overflow: auto;">
                     <!--begin::Table head-->
-
-                    @foreach ($datawim as $key => $wim )
-
-                    <thead>
+                    <thead class="table-los h-35px m-grid-col-middle" style="position: sticky; top: 0;" id="table-head">
                         <tr class="fw-bolder text-muted text-center" style="vertical-align: middle; background-color: #302e74; ">
                             <th rowspan="2" class="min-w-50px">#</th>
-                            <th rowspan="2" class="min-w-100px">Waktu</th>
+                            <th rowspan="2" class="min-w-50px">Waktu</th>
                             <th rowspan="2" class="min-w-100px">Plat Nomor</th>
-                            <th colspan="3">WIM</th>
+                            <th rowspan="2" class="min-w-150px">Berat</th>
+                            <th rowspan="2" class="min-w-150px">JBI</th>
+                            <th rowspan="2" class="min-w-100px">Kecepatan</th>
                             <th rowspan="2" class="min-w-125px">Foto Kendaraan</th>
                             {{-- <th rowspan="2" class="min-w-125px">Foto Lidar</th> --}}
                             {{-- <th rowspan="2" class="min-w-125px">Foto Plat Nomor</th> --}}
                         </tr>
-                        <tr class="fw-bolder text-muted text-center" style="vertical-align: middle; background-color: #302e74; ">
-                            <th class="min-w-80px">Berat</th>
-                            <th class="min-w-80px">JBI</th>
-                            <th class="min-w-100px">Kecepatan</th>
-                        </tr>
                     </thead>
                     <!--end::Table head-->
+                    @foreach ($datawim as $key => $wim )
                     <!--begin::Table body-->
-                    <tbody class="">
+                    <tbody class="m-grid-col-middle" style="vertical-align: middle">
                         <tr>
-                            <td rowspan="4">
+                            <th rowspan="4">
                                 <div class="d-flex justify-content-center">
-                                    <p>{{ $datawim->firstItem() + $key }}</p>
+                                    {{ $datawim->firstItem() + $key }}
                                 </div>
-                            </td>
+                            </th>
                             <td rowspan="4">
                                 <div class="d-flex justify-content-center text-center">
-                                    {{-- <p>{{ $lidar->wim->WeighingDateTime??'' }}</p> --}}
                                     <p>{{ $wim->WeighingDateTime }}</p>
                                 </div>
                             </td>
                             <td rowspan="4">
                                 <div class="d-flex justify-content-center text-center">
-                                    {{-- <p>{{ $lidar->wim->WeighingDateTime??'' }}</p> --}}
                                     <p>{{ $wim->LicencePlate }}</p>
                                 </div>
                             </td>
-                            <td>
-                                <div class="d-flex justify-content-center">
-                                    <p>{{ str_replace('.',',',round(($wim->Weight_wim)/10,2)) }} Kg</p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex justify-content-center">
-                                    <p>{{ $wim->IsWeightOver }} Kg</p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex justify-content-center">
-                                    <p>{{ $wim->Speed }} Km/j</p>
-                                </div>
-                            </td>
-                            <td rowspan="4">
-                                <div class="d-flex justify-content-center">
-                                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#kt_modal_share_earn{{ $wim->id }}" style="background-color: transparent;">
-                                        <img src="{{ $wim->Image }}" width="120" style="background-color: transparent;">
-                                      </button>
 
-                                      <!--begin::Modal - Share & Earn-->
-                                <div class="modal fade" id="kt_modal_share_earn{{ $wim->id }}" tabindex="-1" aria-hidden="true" style="background-color: transparent; ">
-                                    <!--begin::Modal dialog-->
-                                    <div class="modal-dialog modal-dialog-centered mw-650px">
-                                        <!--begin::Modal content-->
-                                        <div class="modal-content">
-                                            <img src="{{ $wim->Image }}" width="650">
-                                        </div>
-                                        <!--end::Modal content-->
+                            <tr>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <p class="m-1">{{ str_replace('.',',',round(($wim->Weight_wim),2)) }} Kg</p>
                                     </div>
-                                    <!--end::Modal dialog-->
-                                </div>
-                                <!--end::Modal - Share & Earn-->
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <p class="m-1">{{ $wim->LimitWeight }} Kg</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <p class="m-1">{{ $wim->Speed }} Km/j</p>
+                                    </div>
+                                </td>
+                                <td rowspan="4">
+                                    <div class="d-flex justify-content-center">
+                                        @if($wim->Image == 'NULL')
+                                        <img src="{{ asset('image/BG_White.jpg') }}" width="140">
+                                    @elseif($wim->Image == 1)
+                                        <img src="{{ asset('image/BG_White.jpg') }}" width="140">
+                                    @elseif($wim->Image == "")
+                                        <img src="{{ asset('image/BG_White.jpg') }}" width="140">
+                                    @else
+                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#kt_modal_share_earn{{ $wim->id }}" style="background-color: transparent;">
+                                            <img src="{{ $wim->Image }}" width="140" style="background-color: transparent;">
+                                        </button>
+                                        <!--begin::Modal - Share & Earn-->
+                                            <div class="modal fade" id="kt_modal_share_earn{{ $wim->id }}" tabindex="-1" aria-hidden="true" style="background-color: transparent; ">
+                                                <!--begin::Modal dialog-->
+                                                <div class="modal-dialog modal-dialog-centered mw-650px">
+                                                    <!--begin::Modal content-->
+                                                    <div class="modal-content">
+                                                        <img src="{{ $wim->Image }}" width="650">
+                                                    </div>
+                                                    <!--end::Modal content-->
+                                                </div>
+                                                <!--end::Modal dialog-->
+                                            </div>
+                                            <!--end::Modal - Share & Earn-->
+                                    @endif 
+                                    </div>
+                                </td>
+                            </tr>
 
-                                </div>
-                            </td>
+                            <tr>
+                                <th class="fw-bolder text-muted text-center" style="background-color: #302e74;">
+                                    <div class="d-flex justify-content-center min-w-140px">
+                                        <p class="m-1">Kelebihan</p>
+                                    </div>
+                                </th>
+                                <th class="fw-bolder text-muted text-center" style="background-color: #302e74; ">
+                                    <div class="d-flex justify-content-center min-w-140px">
+                                        <p class="m-1">Persen</p>
+                                    </div>
+                                </th>
+                                <td rowspan="2">
+                                    <div class="d-flex justify-content-center" style="vertical-align: middle;">
+                                        @if($wim->Image_Plate == 'NULL')
+                                            <img src="{{ asset('image/BG_White_Plate.jpg') }}" width="80">
+                                        @elseif($wim->Image_Plate == 1)
+                                            <img src="{{ asset('image/BG_White_Plate.jpg') }}" width="80">
+                                        @elseif($wim->Image_Plate == "")
+                                            <img src="{{ asset('image/BG_White_Plate.jpg') }}" width="80">
+                                        @else
+                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#kt_modal_share_earn_image_plate{{ $wim->id }}" style="background-color: transparent;">
+                                                <img src="{{ $wim->Image_Plate }}" width="80" style="background-color: transparent;">
+                                            </button>
+
+                                            <!--begin::Modal - Share & Earn-->
+                                                <div class="modal fade" id="kt_modal_share_earn_image_plate{{ $wim->id }}" tabindex="-1" aria-hidden="true" style="background-color: transparent; ">
+                                                    <!--begin::Modal dialog-->
+                                                    <div class="modal-dialog modal-dialog-centered mw-650px">
+                                                        <!--begin::Modal content-->
+                                                        <div class="modal-content">
+                                                            <img src="{{ $wim->Image_Plate }}" width="650">
+                                                        </div>
+                                                        <!--end::Modal content-->
+                                                    </div>
+                                                    <!--end::Modal dialog-->
+                                                </div>
+                                                <!--end::Modal - Share & Earn-->
+                                        @endif
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                       <p class="m-1">{{ str_replace('.',',',round(($wim->OverWeight),2)) }} Kg</p>                                
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-center">
+                                        <p class="m-1">{{ number_format($wim->OverPercentage) }} %</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="15">
+                                    <div class="separator separator-dashed border-light my-5"></div>
+                                </td>
+                            </tr>
                         </tr>
-
-                        <tr>
-                            <th class="fw-bolder text-muted text-center min-w-80px" style="vertical-align: middle; background-color: #302e74; ">
-                                <div class="d-flex justify-content-center">
-                                    <p>Kelebihan</p>
-                                </div>
-                            </th>
-                            <th class="fw-bolder text-muted text-center min-w-80px" style="vertical-align: middle; background-color: #302e74; ">
-                                <div class="d-flex justify-content-center">
-                                    <p>Persen</p>
-                                </div>
-                            </th>
-                            <td rowspan="2">
-                                <div class="d-flex justify-content-center" style="vertical-align: middle;">
-                                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#kt_modal_share_earn{{ $wim->id }}" style="background-color: transparent;">
-                                        <img src="{{ $wim->Image }}" width="80" style="background-color: transparent;">
-                                      </button>
-
-                                      <!--begin::Modal - Share & Earn-->
-								<div class="modal fade" id="kt_modal_share_earn{{ $wim->id }}" tabindex="-1" aria-hidden="true" style="background-color: transparent; ">
-									<!--begin::Modal dialog-->
-									<div class="modal-dialog modal-dialog-centered mw-650px">
-										<!--begin::Modal content-->
-										<div class="modal-content">
-                                            <img src="{{ $wim->Image }}" width="650">
-										</div>
-										<!--end::Modal content-->
-									</div>
-									<!--end::Modal dialog-->
-								</div>
-								<!--end::Modal - Share & Earn-->
-
-                                </div>
-                            </td>
-
-                        </tr>
-                        <tr class="">
-                            <td>
-                                <div class="d-flex justify-content-center">
-                                    <p>{{ number_format($wim->OverWeight) }} Kg</p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex justify-content-center">
-                                    <p>{{ number_format($wim->OverPercentage) }} %</p>
-                                </div>
-                            </td>
-
-                        </tr>
-
                     </tbody>
                     <!--end::Table body-->
                     @endforeach
@@ -248,7 +260,7 @@
             </div>
             <br>
             <div class="pull-right">
-            {{ $datawim->links() }}
+            {{ $datawim->onEachSide(3)->links() }}
             </div>
             <br>
             <!--end::Table container-->

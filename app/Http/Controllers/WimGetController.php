@@ -13,7 +13,7 @@ class WimGetController extends Controller
 {
     public function index(Request $request)
     {
-        
+
         $data = Lidar::join("wim","wim.id","=","lidar.id")
                 ->select("lidar.*","wim.*")
                 ->get();
@@ -54,14 +54,8 @@ class WimGetController extends Controller
             'AxleWeight_3',
             'AxleWeight_4',
             'AxleWeight_5',
-            'Axles_1',
-            'Axles_2',
-            'Axles_3',
-            'Axles_4',
-            'Distance_1',
-            'Distance_2',
-            'Distance_3',
-            'Distance_4',
+            'Axles',
+            'Distance',
             'LidarLimitHeight',
             'LidarLimitWidth',
             'LidarLimitLength',
@@ -80,16 +74,28 @@ class WimGetController extends Controller
             'IsLidarOverLength',
             'IsDimensionOver',
             'Location',
-            'LidarRaw' => 'required|file|',
-            'Image' => 'required|mimes:jpeg,jpg,png',
+            'LidarRaw',
+            'Image',
             'Image_Plate',
+            'WideViewImage',
         ]);
 
 
     try {
 
-        $path = Storage::disk('local')->put('storage/image_wim', $request->file('Image'));
-        $path1 = Storage::disk('local')->put('storage/image_plate', $request->file('Image_Plate'));
+        $path = 'NULL';
+        $path1 = 'NULL';
+        $path2 = 'NULL';
+        if($request->hasFile('Image')){  
+            $path = Storage::disk('local')->put('storage/image_wim', $request->file('Image'));
+        }
+        if($request->hasFile('Image_Plate')){ 
+            $path1 = Storage::disk('local')->put('storage/image_plate', $request->file('Image_Plate'));
+        }
+        if($request->hasFile('WideViewImage')){ 
+            $path2 = Storage::disk('local')->put('storage/wideview_image', $request->file('WideViewImage'));
+        }
+        
         $wim=Wim::create([
             'Weight_wim' => request('Weight_wim'),
             'Speed' => request('Speed'),
@@ -113,9 +119,10 @@ class WimGetController extends Controller
             'Location' => request('Location'),
             'Image' => $path,
             'Image_Plate' => $path1,
+            'WideViewImage' => $path2,
 
         ]);
-       
+
 
         AxleWeights::create([
             'AxleWeight_1' => request('AxleWeight_1'),
@@ -128,20 +135,13 @@ class WimGetController extends Controller
         ]);
 
         AxleSpacings::create([
-            'Axles_1' => request('Axles_1'),
-            'Axles_2' => request('Axles_2'),
-            'Axles_3' => request('Axles_3'),
-            'Axles_4' => request('Axles_4'),
-            'Distance_1' => request('Distance_1'),
-            'Distance_2' => request('Distance_2'),
-            'Distance_3' => request('Distance_3'),
-            'Distance_4' => request('Distance_4'),
+            'Axles' => request('Axles'),
+            'Distance' => request('Distance'),
             'wim_id' => $wim->id
 
 
         ]);
 
-       
 
         $path1 = Storage::disk('public')->put('storage/raw_lidar', $request->file('LidarRaw'));
         Lidar::create([

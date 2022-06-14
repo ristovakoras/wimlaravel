@@ -118,15 +118,16 @@
                             <th class="min-w-150px">Waktu</th>
                             <th class="min-w-130px">Plat Nomor</th>
                             <th class="min-w-50px"></th>
-                            <th class="min-w-100px">Standar</th>
-                            <th class="min-w-80px">Pengukuran</th>
-                            <th class="min-w-100px">Kelebihan</th>
-                            <th class="min-w-80px">Persen</th>
+                            <th class="min-w-60px">Standar</th>
+                            <th class="min-w-60px">Pengukuran</th>
+                            <th class="min-w-60px">Kelebihan</th>
+                            <th class="min-w-60px">Persen</th>
                             <th class="min-w-30px" style="background-color: #302e74;"></th>
-                            <th class="min-w-140px">Berat</th>
+                            <th class="min-w-150px">Berat</th>
                             <th class="min-w-150px">JBI</th>
                             <th class="min-w-100px">Kecepatan</th>
                             <th class="min-w-85px">Foto Kendaraan</th>
+                            <th class="min-w-85px">Foto Samping</th>
                             {{-- <th rowspan="2" class="min-w-125px">Foto Lidar</th> --}}
                             <th class="min-w-500px">Axle</th>
                             {{-- <th rowspan="2" class="min-w-125px">Foto Plat Nomor</th> --}}
@@ -200,10 +201,17 @@
                                 </td>
                                 <td rowspan="4">
                                     <div class="d-flex justify-content-center">
+                                        @if($wim->Image == 'NULL')
+                                        <img src="{{ asset('image/BG_White.jpg') }}" width="140">
+                                    @elseif($wim->Image == 1)
+                                        <img src="{{ asset('image/BG_White.jpg') }}" width="140">
+                                    @elseif($wim->Image == "")
+                                        <img src="{{ asset('image/BG_White.jpg') }}" width="140">
+                                    @else
                                         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#kt_modal_share_earn{{ $wim->id }}" style="background-color: transparent;">
                                             <img src="{{ $wim->Image }}" width="140" style="background-color: transparent;">
-                                          </button>
-                                          <!--begin::Modal - Share & Earn-->
+                                        </button>
+                                        <!--begin::Modal - Share & Earn-->
                                             <div class="modal fade" id="kt_modal_share_earn{{ $wim->id }}" tabindex="-1" aria-hidden="true" style="background-color: transparent; ">
                                                 <!--begin::Modal dialog-->
                                                 <div class="modal-dialog modal-dialog-centered mw-650px">
@@ -216,8 +224,38 @@
                                                 <!--end::Modal dialog-->
                                             </div>
                                             <!--end::Modal - Share & Earn-->
+                                    @endif 
                                     </div>
                                 </td>
+                                <td rowspan="4">
+                                    <div class="d-flex justify-content-center">
+                                    @if($wim->WideViewImage == 'NULL')
+                                        <img src="{{ asset('image/BG_White.jpg') }}" width="140">
+                                    @elseif($wim->WideViewImage == 1)
+                                        <img src="{{ asset('image/BG_White.jpg') }}" width="140">
+                                    @elseif($wim->WideViewImage == "")
+                                        <img src="{{ asset('image/BG_White.jpg') }}" width="140">
+                                    @else
+                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#kt_modal_share_earn_wideImage{{ $wim->id }}" style="background-color: transparent;">
+                                            <img src="{{ $wim->WideViewImage }}" width="140" style="background-color: transparent;">
+                                        </button>
+                                        <!--begin::Modal - Share & Earn-->
+                                            <div class="modal fade" id="kt_modal_share_earn_wideImage{{ $wim->id }}" tabindex="-1" aria-hidden="true" style="background-color: transparent; ">
+                                                <!--begin::Modal dialog-->
+                                                <div class="modal-dialog modal-dialog-centered mw-650px">
+                                                    <!--begin::Modal content-->
+                                                    <div class="modal-content">
+                                                        <img src="{{ $wim->WideViewImage }}" width="650">
+                                                    </div>
+                                                    <!--end::Modal content-->
+                                                </div>
+                                                <!--end::Modal dialog-->
+                                            </div>
+                                            <!--end::Modal - Share & Earn-->
+                                    @endif
+                                    </div>
+                                </td>
+                                
                                 <td style="color: white;">
                                     <div class="d-flex justify-content-center text-center">
                                         <p class="m-1">
@@ -294,23 +332,31 @@
                                 </th>
                                 <td rowspan="2">
                                     <div class="d-flex justify-content-center" style="vertical-align: middle;">
-                                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#kt_modal_share_earn{{ $wim->id }}" style="background-color: transparent;">
-                                            <img src="{{ $wim->Image }}" width="80" style="background-color: transparent;">
-                                          </button>
+                                        @if($wim->Image_Plate == 'NULL')
+                                            <img src="{{ asset('image/BG_White_Plate.jpg') }}" width="80">
+                                        @elseif($wim->Image_Plate == 1)
+                                            <img src="{{ asset('image/BG_White_Plate.jpg') }}" width="80">
+                                        @elseif($wim->Image_Plate == "")
+                                            <img src="{{ asset('image/BG_White_Plate.jpg') }}" width="80">
+                                        @else
+                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#kt_modal_share_earn_image_plate{{ $wim->id }}" style="background-color: transparent;">
+                                                <img src="{{ $wim->Image_Plate }}" width="80" style="background-color: transparent;">
+                                            </button>
 
-                                          <!--begin::Modal - Share & Earn-->
-                                            <div class="modal fade" id="kt_modal_share_earn{{ $wim->id }}" tabindex="-1" aria-hidden="true" style="background-color: transparent; ">
-                                                <!--begin::Modal dialog-->
-                                                <div class="modal-dialog modal-dialog-centered mw-650px">
-                                                    <!--begin::Modal content-->
-                                                    <div class="modal-content">
-                                                        <img src="{{ $wim->Image }}" width="650">
+                                            <!--begin::Modal - Share & Earn-->
+                                                <div class="modal fade" id="kt_modal_share_earn_image_plate{{ $wim->id }}" tabindex="-1" aria-hidden="true" style="background-color: transparent; ">
+                                                    <!--begin::Modal dialog-->
+                                                    <div class="modal-dialog modal-dialog-centered mw-650px">
+                                                        <!--begin::Modal content-->
+                                                        <div class="modal-content">
+                                                            <img src="{{ $wim->Image_Plate }}" width="650">
+                                                        </div>
+                                                        <!--end::Modal content-->
                                                     </div>
-                                                    <!--end::Modal content-->
+                                                    <!--end::Modal dialog-->
                                                 </div>
-                                                <!--end::Modal dialog-->
-                                            </div>
-                                            <!--end::Modal - Share & Earn-->
+                                                <!--end::Modal - Share & Earn-->
+                                        @endif
                                     </div>
                                 </td>
                                 <td style="color: white;">
@@ -407,7 +453,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="14">
+                                <td colspan="15">
                                     <div class="separator separator-dashed border-light my-5"></div>
                                 </td>
                             </tr>

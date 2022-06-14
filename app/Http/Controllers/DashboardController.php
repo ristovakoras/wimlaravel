@@ -271,7 +271,7 @@ class DashboardController extends Controller
             ->select('wim.*', 'LidarLimitHeight', 'LidarLimitWidth','LidarLimitLength','LidarReadingHeight',
             'LidarReadingWidth','LidarReadingLength','LidarOverHeight','LidarOverWidth','LidarOverLength',
             'LidarPercentageHeight','LidarPercentageWidth', 'LidarPercentageLength','Weight_wim','Speed',
-            'OverWeight','LimitWeight','OverWeight','WeighingDateTime','LicencePlate','Image','AxleWeight_1',
+            'OverWeight','LimitWeight','OverWeight','WeighingDateTime','LicencePlate','Image','Image_Plate','WideViewImage','AxleWeight_1',
             'AxleWeight_2','AxleWeight_3','AxleWeight_4','AxleWeight_5','Distance_1','Distance_2','Distance_3','Distance_4')
             ->where('LicencePlate', 'LIKE','%' .$request->search.'%')->paginate(5);
 
@@ -285,7 +285,7 @@ class DashboardController extends Controller
                     ->select('wim.*', 'LidarLimitHeight', 'LidarLimitWidth','LidarLimitLength','LidarReadingHeight',
                     'LidarReadingWidth','LidarReadingLength','LidarOverHeight','LidarOverWidth','LidarOverLength',
                     'LidarPercentageHeight','LidarPercentageWidth', 'LidarPercentageLength','Weight_wim','Speed',
-                    'OverWeight','LimitWeight','OverWeight','WeighingDateTime','LicencePlate','Image','AxleWeight_1',
+                    'OverWeight','LimitWeight','OverWeight','WeighingDateTime','LicencePlate','Image','Image_Plate','WideViewImage','AxleWeight_1',
                     'AxleWeight_2','AxleWeight_3','AxleWeight_4','AxleWeight_5','Distance_1','Distance_2','Distance_3','Distance_4')
                     ->whereBetween('WeighingDateTime', [$start_date,$end_date])->paginate(10)->withQueryString();
         } else {
@@ -297,7 +297,7 @@ class DashboardController extends Controller
             ->select('wim.*', 'LidarLimitHeight', 'LidarLimitWidth','LidarLimitLength','LidarReadingHeight',
             'LidarReadingWidth','LidarReadingLength','LidarOverHeight','LidarOverWidth','LidarOverLength',
             'LidarPercentageHeight','LidarPercentageWidth', 'LidarPercentageLength','Weight_wim','Speed',
-            'OverWeight','LimitWeight','OverWeight','WeighingDateTime','LicencePlate','Image','AxleWeight_1',
+            'OverWeight','LimitWeight','OverWeight','WeighingDateTime','LicencePlate','Image','Image_Plate','WideViewImage','AxleWeight_1',
             'AxleWeight_2','AxleWeight_3','AxleWeight_4','AxleWeight_5','Distance_1','Distance_2','Distance_3','Distance_4')
             ->latest()->paginate(10)->withQueryString();
         }
@@ -376,7 +376,7 @@ class DashboardController extends Controller
             ->select('wim.*', 'LidarLimitHeight', 'LidarLimitWidth','LidarLimitLength','LidarReadingHeight',
             'LidarReadingWidth','LidarReadingLength','LidarOverHeight','LidarOverWidth','LidarOverLength',
             'LidarPercentageHeight','LidarPercentageWidth', 'LidarPercentageLength','Weight_wim','Speed',
-            'OverWeight','LimitWeight','OverWeight','WeighingDateTime','LicencePlate','Image','AxleWeight_1',
+            'OverWeight','LimitWeight','OverWeight','WeighingDateTime','LicencePlate','Image','Image_Plate','WideViewImage','AxleWeight_1',
             'AxleWeight_2','AxleWeight_3','AxleWeight_4','AxleWeight_5','Distance_1','Distance_2','Distance_3','Distance_4')
             ->where('LicencePlate', 'LIKE','%' .$request->search.'%')->paginate(5);
 
@@ -390,7 +390,7 @@ class DashboardController extends Controller
                     ->select('wim.*', 'LidarLimitHeight', 'LidarLimitWidth','LidarLimitLength','LidarReadingHeight',
                     'LidarReadingWidth','LidarReadingLength','LidarOverHeight','LidarOverWidth','LidarOverLength',
                     'LidarPercentageHeight','LidarPercentageWidth', 'LidarPercentageLength','Weight_wim','Speed',
-                    'OverWeight','LimitWeight','OverWeight','WeighingDateTime','LicencePlate','Image','AxleWeight_1',
+                    'OverWeight','LimitWeight','OverWeight','WeighingDateTime','LicencePlate','Image','Image_Plate','WideViewImage','AxleWeight_1',
                     'AxleWeight_2','AxleWeight_3','AxleWeight_4','AxleWeight_5','Distance_1','Distance_2','Distance_3','Distance_4')
                     ->whereBetween('WeighingDateTime', [$start_date,$end_date])->paginate(500);
         } else {
@@ -402,7 +402,7 @@ class DashboardController extends Controller
             ->select('wim.*', 'LidarLimitHeight', 'LidarLimitWidth','LidarLimitLength','LidarReadingHeight',
             'LidarReadingWidth','LidarReadingLength','LidarOverHeight','LidarOverWidth','LidarOverLength',
             'LidarPercentageHeight','LidarPercentageWidth', 'LidarPercentageLength','Weight_wim','Speed',
-            'OverWeight','LimitWeight','OverWeight','WeighingDateTime','LicencePlate','Image','AxleWeight_1',
+            'OverWeight','LimitWeight','OverWeight','WeighingDateTime','LicencePlate','Image','Image_Plate','WideViewImage','AxleWeight_1',
             'AxleWeight_2','AxleWeight_3','AxleWeight_4','AxleWeight_5','Distance_1','Distance_2','Distance_3','Distance_4')
             ->latest()->paginate(10);
         }
